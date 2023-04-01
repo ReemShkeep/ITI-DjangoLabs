@@ -6,6 +6,8 @@ class CustomStudent(admin.ModelAdmin):
       ["Student Information", {"fields": ["fname","lname","age","city"]}],
       ["Scholarship Information", {"fields": ["studentsTrack", "studentsCourse"]}]
        )
+   list_display=("fname","lname","age","city","studentsTrack")
+   
    # def students(self, obj):
    #     return obj.students.fname
 
