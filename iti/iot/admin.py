@@ -7,15 +7,20 @@ class CustomStudent(admin.ModelAdmin):
       ["Scholarship Information", {"fields": ["studentsTrack", "studentsCourse"]}]
        )
    list_display=("fname","lname","age","city","studentsTrack","is_graduated")
+   list_filter=["studentsTrack","studentsCourse"]
+   search_fields=["fname","studentsTrack__name","studentsCourse__title","city"]
+          # lma kan () fl search wl list fl list esht8l fl search drb error 
+   
+   
    
    # def students(self, obj):
    #     return obj.students.fname
 
 
 
-# to make the studentsCourse and studentsTrack in the admin page
-# using inline to make the student could be inherted in the track and course panel 
-#lma agy a3ml add for the track a2dr a3ml add for the students too
+         # to make the studentsCourse and studentsTrack in the admin page
+         # using inline to make the student could be inherted in the track and course panel 
+         #lma agy a3ml add for the track a2dr a3ml add for the students too
 
 class inlineStudent(admin.StackedInline):
    model = Student
@@ -31,9 +36,15 @@ class CustomTrack(admin.ModelAdmin):
    # def studentsTrack(self, obj):
    #     return obj.studentsTrack.name
     
+class inlineTrack(admin.StackedInline):
+   model = Track
+   extra = 1
+
 class CustomCourse(admin.ModelAdmin):
-      def studentsCourse(self, obj):
-          return obj.studentsCourse.title
+   inline=[inlineTrack]
+   
+   def studentsCourse(self, obj):
+      return obj.studentsCourse.title
    
 admin.site.register(Student, CustomStudent)
 admin.site.register(Track, CustomTrack)
