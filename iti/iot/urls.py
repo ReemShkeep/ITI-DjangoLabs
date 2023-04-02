@@ -4,5 +4,5 @@ from iot import views
 urlpatterns = [
     path('home/', views.home),
     path('student/<st_id>', views.getStudent),
-    path('allstudents/', views.getAllStudents),
+    path('allstu/', views.getAllStudents),
 ]

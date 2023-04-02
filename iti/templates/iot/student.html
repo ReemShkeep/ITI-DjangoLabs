@@ -1,3 +1,35 @@
-{% if True  %}
-+    {% if True %}
-{% end if %}
+{% extends 'iot/base.html' %}
+{% load static %}
+{% block title_block  %}
+<h1>Welcome  </h1>
+<img src="{% static 'wel.png' %}" alt="welcome cat " width="200" height="200">
+{% endblock  %}
+
+{% block content_block  %}
+<p>Here's {{student.fname}}'s Information Page from {{student.city}} city  </p>
+
+<a href='/iot/allstu'> <img src="https://cdn-icons-png.flaticon.com/512/0/340.png" alt="Student Image" width="20" height="20"></a>
+{% endblock  %}
+
+
+
+{% block main_block  %}
+<table border='1'>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Age</th>
+    <th>Track </th>
+    <th>City</th>
+    <th>Graduated?</th>
+    <tr>
+      <td>{{student.fname}}</td>
+      {% comment %} <td>{{student.lname}}</td> {% endcomment %}
+      <td>{{student.age}}</td>
+      <td>{{student.track }}</td>
+      <td>{{student.city}}</td>
+      <td>{{student.is_graduate}}</td>
+   </tr>
+</table>
+
+<button onclick="window.location.href = '/iot/allstu';">Back to Home</button>
+{% endblock  %}
