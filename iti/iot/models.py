@@ -39,4 +39,5 @@ class Student(models.Model):
          return False
 
     is_graduated.short_description = 'Graduated?'
-    is_graduated.boolean = True
+    is_graduated.boolean = True 
+    
